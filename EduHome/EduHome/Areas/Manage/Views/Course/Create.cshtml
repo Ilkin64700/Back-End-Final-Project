@@ -1,0 +1,73 @@
+﻿@model Course
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+
+    List<Category> categories = (List<Category>)ViewBag.Categories;
+    List<Teacher> teachers = (List<Teacher>)ViewBag.Teachers;
+
+}
+
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.Name">Name</label>
+                <input asp-for="@Model.Name" class="form-control" id="Name" placeholder="Name">
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.TeacherId">Teacher</label>
+                <select class="form-control" asp-for="@Model.TeacherId" asp-items="@(new SelectList(teachers,"Id","Name"))">
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.CategoryId">Category</label>
+                <select class="form-control" asp-for="@Model.CategoryId" asp-items="@(new SelectList(categories,"Id","Name"))">
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Desc">Desc</label>
+                <input asp-for="@Model.Desc" class="form-control" id="Desc" placeholder="Desc">
+                <span asp-validation-for="@Model.Desc" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.AboutDesc">About Desc</label>
+                <input asp-for="@Model.AboutDesc" class="form-control" id="AboutDesc" placeholder="About Desc">
+                <span asp-validation-for="@Model.AboutDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.ApplyDesc">Apply Desc</label>
+                <input asp-for="@Model.ApplyDesc" class="form-control" id="ApplyDesc" placeholder="ApplyDesc">
+                <span asp-validation-for="@Model.ApplyDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.CertificationDesc">Certification Desc</label>
+                <input asp-for="@Model.CertificationDesc" class="form-control" id="CertificationDesc" placeholder="Certification Desc">
+                <span asp-validation-for="@Model.CertificationDesc" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.Price">Price</label>
+                <input asp-for="@Model.Price" class="form-control" id="Price" placeholder="Price">
+                <span asp-validation-for="@Model.Price" class="text-danger"></span>
+            </div>
+
+
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.ImageFile">Image</label>
+            <input asp-for="@Model.ImageFile" />
+            <span asp-validation-for="@Model.ImageFile" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

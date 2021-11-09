@@ -1,0 +1,56 @@
+﻿@model Feature
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.Start">Start</label>
+                <input asp-for="@Model.Start" class="form-control" id="Start" placeholder="Start">
+                <span asp-validation-for="@Model.Start" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.Duration">Duration</label>
+                <input asp-for="@Model.Duration" class="form-control" id="Duration" placeholder="Duration">
+                <span asp-validation-for="@Model.Duration" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.ClassDuration">Class Duration</label>
+                <input asp-for="@Model.ClassDuration" class="form-control" id="ClassDuration" placeholder="Class Duration">
+                <span asp-validation-for="@Model.ClassDuration" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.SkillLevel">Skill Level</label>
+                <input asp-for="@Model.SkillLevel" class="form-control" id="SkillLevel" placeholder="Skill Level">
+                <span asp-validation-for="@Model.SkillLevel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Language">Language</label>
+                <input asp-for="@Model.Language" class="form-control" id="Language" placeholder="Language">
+                <span asp-validation-for="@Model.Language" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Student">Student</label>
+                <input asp-for="@Model.Student" class="form-control" id="Student" placeholder="Student">
+                <span asp-validation-for="@Model.Student" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Assesment">Assesment</label>
+                <input asp-for="@Model.Assesment" class="form-control" id="Assesment" placeholder="Assesment">
+                <span asp-validation-for="@Model.Assesment" class="text-danger"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,127 @@
+﻿@model Setting
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Question">Question</label>
+                <input asp-for="@Model.Question" class="form-control" id="Question" placeholder="Question">
+                <span asp-validation-for="@Model.Question" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Phone">Phone</label>
+                <input asp-for="@Model.Phone" class="form-control" id="Phone" placeholder="Phone">
+                <span asp-validation-for="@Model.Phone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Phone2">Phone 2</label>
+                <input asp-for="@Model.Phone2" class="form-control" id="Phone2" placeholder="Phone2">
+                <span asp-validation-for="@Model.Phone2" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Phone3">Phone 3</label>
+                <input asp-for="@Model.Phone3" class="form-control" id="Phone3" placeholder="Phone3">
+                <span asp-validation-for="@Model.Phone3" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.FooterDesc">Footer Desc</label>
+                <input asp-for="@Model.FooterDesc" class="form-control" id="FooterDesc" placeholder="FooterDesc">
+                <span asp-validation-for="@Model.FooterDesc" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.Adress">Adress</label>
+                <input asp-for="@Model.Adress" class="form-control" id="Adress" placeholder="Adress">
+                <span asp-validation-for="@Model.Adress" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.InstagramURL">Instagram URL</label>
+                <input asp-for="@Model.InstagramURL" class="form-control" id="InstagramURL" placeholder="InstagramURL">
+                <span asp-validation-for="@Model.InstagramURL" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.PinterestURL">Pinterest URL</label>
+                <input asp-for="@Model.PinterestURL" class="form-control" id="PinterestURL" placeholder="PinterestURL">
+                <span asp-validation-for="@Model.PinterestURL" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.TwitterURL">Twitter URL</label>
+                <input asp-for="@Model.TwitterURL" class="form-control" id="TwitterURL" placeholder="TwitterURL">
+                <span asp-validation-for="@Model.TwitterURL" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label asp-for="@Model.Logofile">Logo</label>
+                <input asp-for="@Model.Logofile" />
+                <span asp-validation-for="@Model.Logofile" class="text-danger"></span>
+
+                @if (Model.Logo != null)
+                {
+                    <div class="img-box" style="position:relative;max-width:200px">
+                        <img class="d-block" src="~/img/event/@Model.Logo" style="max-width:200px" />
+                        <i class="fas fa-times remove-img-box" style="color:red;position:absolute;top:-7px;right:10px;cursor:pointer"></i>
+                        <input type="hidden" name="Photo" value="@Model.Logo" />
+                    </div>
+                }
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.FooterLogofile">Footer Logo</label>
+                <input asp-for="@Model.FooterLogofile" />
+                <span asp-validation-for="@Model.FooterLogofile" class="text-danger"></span>
+
+                @if (Model.FooterLogo != null)
+                {
+                    <div class="img-box" style="position:relative;max-width:200px">
+                        <img class="d-block" src="~/img/event/@Model.FooterLogo" style="max-width:200px" />
+                        <i class="fas fa-times remove-img-box" style="color:red;position:absolute;top:-7px;right:10px;cursor:pointer"></i>
+                        <input type="hidden" name="Photo" value="@Model.FooterLogo" />
+                    </div>
+                }
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.Bannerphotofile">Banner Photo</label>
+                <input asp-for="@Model.Bannerphotofile" />
+                <span asp-validation-for="@Model.FooterLogofile" class="text-danger"></span>
+
+                @if (Model.Bannerphoto != null)
+                {
+                    <div class="img-box" style="position:relative;max-width:200px">
+                        <img class="d-block" src="~/img/event/@Model.Bannerphoto" style="max-width:200px" />
+                        <i class="fas fa-times remove-img-box" style="color:red;position:absolute;top:-7px;right:10px;cursor:pointer"></i>
+                        <input type="hidden" name="Photo" value="@Model.Bannerphoto" />
+                    </div>
+                }
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $(document).on("click", ".remove-img-box", function (e) {
+                $(this).parents(".img-box").empty();
+            })
+        })
+    </script>
+}

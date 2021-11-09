@@ -1,0 +1,63 @@
+-------------
+AppDbContext
+-------------
+public AppDbContext(DbContextOptions<AppDbContext> options) : base (options){}
+
+ protected override void OnModelCreating (ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        }
+
+public DbSet<Admin> Admins {get;set;}
+
+
+-------------
+Configuration
+-------------
+public class AdminConfiguration : IEntityTypeConfiguration<Admin>
+
+
+-------
+Startup
+-------
+services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+
+--------------------------
+AppSettingsDevlopment.json
+--------------------------
+"ConnectionStrings": {
+    "Default": "Server=LAPTOP-OLKNLFF4;Database=myDataBase;Trusted_Connection=True;"
+  },
+
+
+--------------
+Add Migration
+--------------
+dotnet ef -p .\PaymentsWebApp\PaymentsWebApp.csproj migrations add InitialCreation -o Data/Migrations
+database update
+
+
+--------------------------------------------------------REPOSITORY---------------------------------------
+-------
+Startup
+-------
+services.AddDbContext<AppDbContext>(options =>
+                   options.UseSqlServer(Configuration.GetConnectionString("Default"),
+                   x => x.MigrationsAssembly("DataService")),ServiceLifetime.Singleton);
+
+---------
+dotnet ef --startup-project .\VenusShop\VenusShop.csproj migrations add InitialCreation -p .\DataService\DataService.csproj -o Data/Migrations
+dotnet ef --startup-project .\VenusShop\VenusShop.csproj database update -p .\DataService\DataService.csproj
+
+
+remove migrations
+ dotnet ef --startup-project .\VenusShop\VenusShop.csproj database update InitialCreation -p .\DataService\DataService.csproj
+ dotnet ef --startup-project .\VenusShop\VenusShop.csproj migrations remove -p .\DataService\DataService.csproj
+
+
+
+FInalProj
+
+dotnet ef --startup-project .\FinalProjectAPI\FinalProjectAPI.csproj migrations add InitialCreation -p .\DataService\DataService.csproj -o Data/Migrations
+dotnet ef --startup-project .\FinalProjectAPI\FinalProjectAPI.csproj database update -p .\DataService\DataService.csproj

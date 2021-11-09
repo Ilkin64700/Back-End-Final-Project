@@ -1,0 +1,80 @@
+﻿@model Teacher
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Name">Name</label>
+                <input asp-for="@Model.Name" class="form-control" id="Name" placeholder="Name">
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Position">Position</label>
+                <input asp-for="@Model.Position" class="form-control" id="Position" placeholder="Position">
+                <span asp-validation-for="@Model.Position" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Faculty">Faculty</label>
+                <input asp-for="@Model.Faculty" class="form-control" id="Faculty" placeholder="Faculty">
+                <span asp-validation-for="@Model.Faculty" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Degree">Degree</label>
+                <input asp-for="@Model.Degree" class="form-control" id="Degree" placeholder="Degree">
+                <span asp-validation-for="@Model.Degree" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Experience">Experience</label>
+                <input asp-for="@Model.Experience" class="form-control" id="Experience" placeholder="Experience">
+                <span asp-validation-for="@Model.Experience" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Hobbies">Hobbies</label>
+                <input asp-for="@Model.Hobbies" class="form-control" id="Hobbies" placeholder="Hobbies">
+                <span asp-validation-for="@Model.Hobbies" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label asp-for="@Model.Mail">Mail</label>
+                <input asp-for="@Model.Mail" class="form-control" id="Mail" placeholder="Mail">
+                <span asp-validation-for="@Model.Mail" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label asp-for="@Model.Number">Number</label>
+                <input asp-for="@Model.Number" class="form-control" id="Number" placeholder="Number">
+                <span asp-validation-for="@Model.Number" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label asp-for="@Model.Skype">Skype</label>
+                <input asp-for="@Model.Skype" class="form-control" id="Skype" placeholder="Skype">
+                <span asp-validation-for="@Model.Skype" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label asp-for="@Model.About">About</label>
+            <input asp-for="@Model.About" class="form-control" id="About" placeholder="About">
+            <span asp-validation-for="@Model.About" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.ImageFile">Image</label>
+            <input asp-for="@Model.ImageFile" />
+            <span asp-validation-for="@Model.ImageFile" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
